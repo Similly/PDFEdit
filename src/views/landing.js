@@ -1,4 +1,5 @@
 import { navigate, getState } from '../main.js';
+import { createThemeToggleBtn } from '../utils/theme.js';
 
 /**
  * Landing Page — Hero with drag & drop upload
@@ -19,6 +20,7 @@ export function renderLanding(app) {
         </div>
         <span class="logo-text">PDF Edit</span>
       </div>
+      <div id="landing-nav-actions"></div>
     </nav>
 
     <main class="landing-hero">
@@ -89,6 +91,9 @@ export function renderLanding(app) {
   `;
 
   app.appendChild(container);
+
+  // ── Theme toggle ──
+  container.querySelector('#landing-nav-actions').appendChild(createThemeToggleBtn());
 
   // ── Upload handling ──
   const uploadZone = container.querySelector('#upload-zone');

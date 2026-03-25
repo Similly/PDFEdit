@@ -2,6 +2,7 @@ import { navigate, getState } from '../main.js';
 import { loadPdf, addTextAnnotation, addSignatureImage, addBlankPage, deletePage, exportPdf, downloadPdf, getFormFields, fillFormField } from '../utils/pdfEngine.js';
 import { loadPdfForRendering, renderPage, renderThumbnail, extractFormFieldPositions } from '../utils/pdfRenderer.js';
 import { openSignatureModal } from './signature.js';
+import { createThemeToggleBtn } from '../utils/theme.js';
 
 const TEXT_FONTS = [
   { label: 'Sans', value: "'Inter', sans-serif" },
@@ -81,11 +82,12 @@ export async function renderEditor(app) {
         </div>
       </div>
 
-      <div class="topbar-right">
+      <div class="topbar-right" id="topbar-right">
         <button class="btn-secondary" id="btn-merge-nav" title="Merge PDFs">
           <span class="material-symbols-outlined">dynamic_feed</span>
           Merge
         </button>
+        <div id="theme-toggle-slot"></div>
         <button class="btn-primary" id="btn-download">
           <span class="material-symbols-outlined">download</span>
           Download
@@ -125,6 +127,9 @@ export async function renderEditor(app) {
   `;
 
   app.appendChild(container);
+
+  // ── Theme toggle ──
+  container.querySelector('#theme-toggle-slot').appendChild(createThemeToggleBtn());
 
   // Load PDFs
   try {
