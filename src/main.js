@@ -3,11 +3,6 @@ import './views/views.css';
 import { renderLanding } from './views/landing.js';
 import { renderEditor } from './views/editor.js';
 import { renderMerge } from './views/merge.js';
-import { initTheme } from './utils/theme.js';
-
-// Apply saved / system theme before first paint
-initTheme();
-
 
 /**
  * App State
