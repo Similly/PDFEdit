@@ -1,0 +1,11 @@
+services:
+  pdfedit-app:
+    build: .
+    container_name: pdfedit-app
+    restart: unless-stopped
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true
